@@ -2,6 +2,7 @@ package asciianimator
 
 import (
 	"fmt"
+	"math/rand"
 	"os"
 	"time"
 
@@ -118,4 +119,30 @@ func (img Image) Sink(sleepInterval time.Duration) {
 	moveUp(len(img))
 }
 
+// RandomizeColorAndText displays an image with the same dimension of the image,
+// but both the colors and the chars are randomized.
+// The cursor position remains unchanged after this function returns.
+func (img Image) RandomizeColorAndChars(
+	sleepInterval time.Duration, probToDraw float64, startChar, endChar int) {
+	clone := img.Clone()
+	rand.Seed(time.Now().UnixNano())
+
+	for {
+		for _, row := range clone {
+			for _, pixel := range row {
+				pixel.Label = string(byte(rand.Intn(endChar-startChar) + startChar))
+				if probToDraw > rand.Float64() {
+					pixel.FgCol = ansi.Cols[rand.Intn(numColors)]
+				} else {
+					pixel.FgCol = ansi.Cols[colorBlack]
+				}
+
+				fmt.Print(pixel)
+			}
+			moveDownAndToLineStart(1)
+		}
+
+		moveUp(len(clone))
+		time.Sleep(sleepInterval)
+	}
 }
