@@ -3,13 +3,16 @@ package asciianimator
 import "fmt"
 
 const (
-	esc                        = "\x1B"
+	esc = "\x1B"
+
 	moveUpTmpl                 = esc + "[%dA"
 	moveDownTmpl               = esc + "[%dB"
 	moveRightTmpl              = esc + "[%dC"
 	moveLeftTmpl               = esc + "[%dD"
 	moveDownAndToLineStartTmpl = esc + "[%dE"
 	moveUpAndToLineStartTmpl   = esc + "[%dF"
+
+	eraseEntireLineSeq = esc + "[2K"
 )
 
 func moveUp(n int) {
@@ -34,4 +37,8 @@ func moveDownAndToLineStart(n int) {
 
 func moveUpAndToLineStart(n int) {
 	fmt.Printf(moveUpAndToLineStartTmpl, n)
+}
+
+func eraseEntireLine() {
+	fmt.Print(eraseEntireLineSeq)
 }

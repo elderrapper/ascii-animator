@@ -95,5 +95,27 @@ func (img Image) drawFromTop(sleepInterval time.Duration) {
 		moveDownAndToLineStart(1)
 		time.Sleep(sleepInterval)
 	}
-	moveUpAndToLineStart(len(img))
+	moveUp(len(img))
+}
+
+// Sink make the drawn image sink.
+// The cursor position remains unchanged after this function returns.
+func (img Image) Sink(sleepInterval time.Duration) {
+	for n := len(img) - 1; n >= 0; n-- {
+		eraseEntireLine()
+		moveDown(1)
+
+		for i := 0; i < n; i++ {
+			for _, pixel := range img[i] {
+				fmt.Print(pixel.String())
+			}
+			moveDownAndToLineStart(1)
+		}
+
+		moveUp(n)
+		time.Sleep(sleepInterval)
+	}
+	moveUp(len(img))
+}
+
 }
