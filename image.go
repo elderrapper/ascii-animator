@@ -42,6 +42,15 @@ func NewImage(imagePath string) (Image, error) {
 	return image, nil
 }
 
+func (img Image) Clone() Image {
+	clone := make(Image, len(img))
+	for i := range img {
+		clone[i] = make([]*ansi.StyledText, len(img[i]))
+		copy(clone[i], img[i])
+	}
+	return clone
+}
+
 // DrawFromLeft draws the image from left and sleeps sleepInterval after drawing a column.
 // The cursor position remains unchanged after this function returns.
 func (img Image) DrawFromLeft(sleepInterval time.Duration) {
@@ -59,3 +68,32 @@ func (img Image) DrawFromLeft(sleepInterval time.Duration) {
 	moveLeft(len(img[0]))
 }
 
+// DrawBlackAndWhiteFromTop draws a B&W version of the image from top.
+// The cursor position remains unchanged after this function returns.
+func (img Image) DrawBlackAndWhiteFromTop(sleepInterval time.Duration) {
+	clone := img.Clone()
+	clone.toBlackAndWhite()
+	clone.drawFromTop(sleepInterval)
+}
+
+func (img Image) toBlackAndWhite() {
+	for _, row := range img {
+		for _, pixel := range row {
+			if !isBlack(pixel.FgCol) {
+				pixel.FgCol = ansi.Cols[colorWhite]
+			}
+		}
+	}
+}
+
+func (img Image) drawFromTop(sleepInterval time.Duration) {
+	for _, row := range img {
+		for _, pixel := range row {
+			fmt.Print(pixel.String())
+		}
+
+		moveDownAndToLineStart(1)
+		time.Sleep(sleepInterval)
+	}
+	moveUpAndToLineStart(len(img))
+}
