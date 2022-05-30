@@ -3,10 +3,12 @@ package asciianimator
 import (
 	"fmt"
 	"os"
+	"time"
 
 	"github.com/leaanthony/go-ansi-parser"
 )
 
+// Image is an 2D ASCII artwork.
 type Image [][]*ansi.StyledText
 
 // NewImage parses an image that is represented by ASCII art and stored in an .ans file.
@@ -39,3 +41,21 @@ func NewImage(imagePath string) (Image, error) {
 	}
 	return image, nil
 }
+
+// DrawFromLeft draws the image from left and sleeps sleepInterval after drawing a column.
+// The cursor position remains unchanged after this function returns.
+func (img Image) DrawFromLeft(sleepInterval time.Duration) {
+	for j := range img[0] {
+		for i := range img {
+			fmt.Print(img[i][j].String())
+			moveDown(1)
+			moveLeft(1)
+		}
+
+		moveUp(len(img))
+		moveRight(1)
+		time.Sleep(sleepInterval)
+	}
+	moveLeft(len(img[0]))
+}
+
