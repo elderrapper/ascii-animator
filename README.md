@@ -29,3 +29,7 @@ TODO:
     ```
 
 1. Tune the values in `config.yaml` according to your personal preferences.
+
+## Notes
+
+The stage when randomized images are displayed is designed to override the previous line on purpose.
