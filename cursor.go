@@ -10,7 +10,6 @@ const (
 	moveRightTmpl              = esc + "[%dC"
 	moveLeftTmpl               = esc + "[%dD"
 	moveDownAndToLineStartTmpl = esc + "[%dE"
-	moveUpAndToLineStartTmpl   = esc + "[%dF"
 
 	eraseEntireLineSeq = esc + "[2K"
 )
@@ -33,10 +32,6 @@ func moveLeft(n int) {
 
 func moveDownAndToLineStart(n int) {
 	fmt.Printf(moveDownAndToLineStartTmpl, n)
-}
-
-func moveUpAndToLineStart(n int) {
-	fmt.Printf(moveUpAndToLineStartTmpl, n)
 }
 
 func eraseEntireLine() {
