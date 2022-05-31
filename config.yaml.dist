@@ -1,0 +1,15 @@
+image_path: "image.ans"
+within_stage_interval:
+  draw_from_left: "15ms"
+  draw_black_and_white_from_top: "60ms"
+  sink: "120ms"
+  random: "750ms"
+between_stages_interval:
+  from_left_2_black_and_white_from_top: "1s"
+  black_and_white_from_top_2_sink: "1s"
+  sink_2_random: "1s"
+random:
+  draw_prob: 0.04
+  char_range:
+    start: 33
+    end: 126
