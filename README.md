@@ -1,9 +1,6 @@
 # ASCII Animator
 
-TODO:
-
-- Add a demo video.
-- Explain why project is created when the MV is ready.
+https://user-images.githubusercontent.com/17587061/171124093-0a51f1c8-09e5-4db8-b3ea-8abc64890660.mp4
 
 ## How to Use
 
@@ -33,3 +30,7 @@ TODO:
 ## Notes
 
 The stage when randomized images are displayed is designed to override the previous line on purpose.
+
+## TODOs
+
+- Explain why this project is created when the MV is ready.
