@@ -130,7 +130,7 @@ func (img Image) RandomizeColorAndChars(
 	for {
 		for _, row := range clone {
 			for _, pixel := range row {
-				pixel.Label = string(byte(rand.Intn(endChar-startChar) + startChar))
+				pixel.Label = string(byte(rand.Intn(endChar-startChar+1) + startChar))
 				if probToDraw > rand.Float64() {
 					pixel.FgCol = ansi.Cols[rand.Intn(numColors)]
 				} else {

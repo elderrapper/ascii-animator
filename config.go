@@ -46,6 +46,8 @@ type Config struct {
 		DrawProb float64 `yaml:"draw_prob" default:"0.04"`
 
 		// CharRange indicates the ASCII range of the possible characters.
+		// Both boundaries are inclusive.
+		//
 		// Regarding the default values,
 		// please check https://www.cs.mcgill.ca/~rwest/wikispeedia/wpcd/wp/a/ASCII.htm.
 		CharRange struct {
