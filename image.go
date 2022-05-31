@@ -102,9 +102,12 @@ func (img Image) drawFromTop(sleepInterval time.Duration) {
 // Sink make the drawn image sink.
 // The cursor position remains unchanged after this function returns.
 func (img Image) Sink(sleepInterval time.Duration) {
-	for n := len(img) - 1; n >= 0; n-- {
+	for n := len(img) - 1; ; n-- {
 		eraseEntireLine()
 		moveDown(1)
+		if n == 0 {
+			break
+		}
 
 		for i := 0; i < n; i++ {
 			for _, pixel := range img[i] {
@@ -121,11 +124,13 @@ func (img Image) Sink(sleepInterval time.Duration) {
 
 // RandomizeColorAndText displays an image with the same dimension of the image,
 // but both the colors and the chars are randomized.
-// The cursor position remains unchanged after this function returns.
+// This function is designed to be run forever.
 func (img Image) RandomizeColorAndChars(
 	sleepInterval time.Duration, probToDraw float64, startChar, endChar int) {
+
 	clone := img.Clone()
 	rand.Seed(time.Now().UnixNano())
+	moveUp(1)
 
 	for {
 		for _, row := range clone {
