@@ -1,6 +1,6 @@
 # ASCII Animator
 
-https://user-images.githubusercontent.com/17587061/171124093-0a51f1c8-09e5-4db8-b3ea-8abc64890660.mp4
+[demo-video](https://user-images.githubusercontent.com/17587061/171124093-0a51f1c8-09e5-4db8-b3ea-8abc64890660.mp4)
 
 ## How to Use
 
