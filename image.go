@@ -24,14 +24,7 @@ func NewImage(imagePath string) (Image, error) {
 	start := 0
 	for i := 0; i < len(str); i++ {
 		if str[i] == '\n' {
-			// I'm not sure why .ans files downloaded from Ascii Art converter [1]
-			// start with a seemly invalid ANSI escape sequence: `^[[107;40m`.
-			//
-			// [1] https://manytools.org/hacker-tools/convert-images-to-ascii-art/
-			row, err := ansi.Parse(
-				str[start:i],
-				ansi.WithIgnoreInvalidCodes(),
-			)
+			row, err := ansi.Parse(str[start:i])
 			if err != nil {
 				return nil, fmt.Errorf("failed to parse the read image: %w", err)
 			}
