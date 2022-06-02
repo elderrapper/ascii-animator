@@ -86,7 +86,7 @@ func (img Image) drawFromTop(sleepInterval time.Duration) {
 			fmt.Print(pixel.String())
 		}
 
-		moveDownAndToLineStart(1)
+		fmt.Println()
 		time.Sleep(sleepInterval)
 	}
 	moveUp(len(img))
@@ -106,7 +106,7 @@ func (img Image) Sink(sleepInterval time.Duration) {
 			for _, pixel := range img[i] {
 				fmt.Print(pixel.String())
 			}
-			moveDownAndToLineStart(1)
+			fmt.Println()
 		}
 
 		moveUp(n)
@@ -137,7 +137,7 @@ func (img Image) RandomizeColorAndChars(
 
 				fmt.Print(pixel)
 			}
-			moveDownAndToLineStart(1)
+			fmt.Println()
 		}
 
 		moveUp(len(clone))

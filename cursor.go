@@ -5,11 +5,10 @@ import "fmt"
 const (
 	esc = "\x1B"
 
-	moveUpTmpl                 = esc + "[%dA"
-	moveDownTmpl               = esc + "[%dB"
-	moveRightTmpl              = esc + "[%dC"
-	moveLeftTmpl               = esc + "[%dD"
-	moveDownAndToLineStartTmpl = esc + "[%dE"
+	moveUpTmpl    = esc + "[%dA"
+	moveDownTmpl  = esc + "[%dB"
+	moveRightTmpl = esc + "[%dC"
+	moveLeftTmpl  = esc + "[%dD"
 
 	eraseEntireLineSeq = esc + "[2K"
 )
@@ -28,10 +27,6 @@ func moveRight(n int) {
 
 func moveLeft(n int) {
 	fmt.Printf(moveLeftTmpl, n)
-}
-
-func moveDownAndToLineStart(n int) {
-	fmt.Printf(moveDownAndToLineStartTmpl, n)
 }
 
 func eraseEntireLine() {
