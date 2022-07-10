@@ -1,5 +1,7 @@
 # ASCII Animator
 
+This project is used in the official [music video](https://www.youtube.com/watch?v=fHBTryj_OBQ&t=114s) of "In My Dream I Hit The Bay".
+
 [demo-video](https://user-images.githubusercontent.com/17587061/171124093-0a51f1c8-09e5-4db8-b3ea-8abc64890660.mp4)
 
 ## How to Use
@@ -30,7 +32,3 @@
 ## Notes
 
 The stage when randomized images are displayed is designed to override the previous line on purpose.
-
-## TODOs
-
-- Explain why this project is created when the MV is ready.
